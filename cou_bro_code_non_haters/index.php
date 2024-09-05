@@ -7,40 +7,26 @@
 </head>
 <body>
     <form action="<?= $_SERVER['PHP_SELF'] ?>" method="post">
-        <!-- x -->
-        <label for="x">x</label>
-        <input type="text" name="x" id="x"><br>
-        <!-- y -->
-        <label for="y">y</label>
-        <input type="text" name="y" id="y"><br>
-        <!-- z -->
-        <label for="z">z</label>
-        <input type="text" name="z" id="z"><br>
-        <input type="submit" value="total">
+        <label for="radius">Radius:</label>
+        <input type="text" name="radius" id="radius"><br>
+        <input type="submit" value="calculate"><br>
     </form>
+
 </body>
 </html>
 <?php
-    $x = $_POST['x'] ?? 0;
-    $y = $_POST['y'] ?? 0;
-    $z = $_POST['z'] ?? 0;
-    $total = null;
+    $radius = $_POST['radius'] ?? null;
+    $circumference = null; //ob
+    $area = null; 
+    $volume = null;
 
-    // $total = abs($x);
-    // $total = round($x);
-    // $total = floor($x);
-    // $total = ceil($x);
-    // pow
-    // $total = pow($x, $y);
-    // sqrt
-    // $total = sqrt($x);
-    // $total = max($x, $y, $z);
-    // $total = min($x, $y, $z);
-    // pi
-    // $total = pi();
-    //rand
-    $total = rand();
+    $circumference = 2 * pi() * $radius;
+    $circumference = round($circumference, 2);
+    $area = pi() * pow($radius, 2);
+    $area = round($area, 2);
 
-
-
-    echo $total;
+    $volume = 4/3 * pi() * pow($radius, 3);
+    $volume = round($volume, 2);
+    echo "The circumference of the circle is {$circumference} cm <br>";
+    echo "The area of the circle is {$area} cm<sup>2</sup><br>";
+    echo "The volume of the circle is {$volume} cm<sup>3</sup>";
