@@ -5,17 +5,22 @@
     // && - true if both conditions are true. False if either one is false
     // || - true if either condition is true. False if both are false
     // ! - true if condition is false. false if condition is true
-$temp_celcius = -100;
-$claudy = true;
+$age = 19;
+$citizen = false;
 
-if($temp_celcius < 0 || $temp_celcius > 30){
-    echo "The weather is bad<br>";
+if(!$age >= 18 || !$citizen){
+    echo "You cannot vote";
 }else{
-    echo "The weather is good<br>";
+    echo "You can vote";
 }
+echo "<br>Sell movie tickets<br>";
+$child = false;
+$senior = false;
+$ticket = null;
 
-if(!$claudy){
-    echo "Its sunny";
+if($child || $senior){
+    $ticket = 10;
 }else{
-    echo "Its claudy";
+    $ticket = 15;
 }
+echo "Ticket price: \${$ticket}";
