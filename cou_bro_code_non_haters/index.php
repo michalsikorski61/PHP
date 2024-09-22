@@ -1,17 +1,21 @@
-<?php
-    //if statements - if some condition is true, do something
-    // if condition is false, do something else or don't do anything at all
-$hours = 50;
-$rate = 15;
-$weeklyPay = null;
+<?php 
+    // logical operators - combine conditional statements
+    // if(condition1 && condition2) - both conditions must be true
 
-if($hours <= 0){
-    $weeklyPay = 0;
-}
-elseif($hours <= 40){
-    $weeklyPay = $hours * $rate;
+    // && - true if both conditions are true. False if either one is false
+    // || - true if either condition is true. False if both are false
+    // ! - true if condition is false. false if condition is true
+$temp_celcius = -100;
+$claudy = true;
+
+if($temp_celcius < 0 || $temp_celcius > 30){
+    echo "The weather is bad<br>";
 }else{
-    $weeklyPay = (40 * $rate) + ($hours - 40) * ($rate * 1.5);
+    echo "The weather is good<br>";
 }
 
-echo "You made \${$weeklyPay} this week";
+if(!$claudy){
+    echo "Its sunny";
+}else{
+    echo "Its claudy";
+}
