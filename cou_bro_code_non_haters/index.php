@@ -1,26 +1,25 @@
-<?php 
-    // logical operators - combine conditional statements
-    // if(condition1 && condition2) - both conditions must be true
+<?php
+    //switch - replacement to using many ifelse statements
+    //  more efficient, less code to write
 
-    // && - true if both conditions are true. False if either one is false
-    // || - true if either condition is true. False if both are false
-    // ! - true if condition is false. false if condition is true
-$age = 19;
-$citizen = false;
+    $grade = 'A';
 
-if(!$age >= 18 || !$citizen){
-    echo "You cannot vote";
-}else{
-    echo "You can vote";
-}
-echo "<br>Sell movie tickets<br>";
-$child = false;
-$senior = false;
-$ticket = null;
-
-if($child || $senior){
-    $ticket = 10;
-}else{
-    $ticket = 15;
-}
-echo "Ticket price: \${$ticket}";
+    switch($grade){
+        case 'A':
+            echo 'You are a superstar';
+            break;
+        case 'B':
+            echo 'You did great';
+            break;
+        case 'C':
+            echo 'You did okay';
+            break;
+        case 'D':
+            echo 'You did poorly';
+            break;
+        case 'F':
+            echo 'You failed';
+            break;
+        default:
+            echo "{$grade} is not a valid grade";
+    }
