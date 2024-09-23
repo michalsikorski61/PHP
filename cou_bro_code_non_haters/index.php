@@ -1,34 +1,46 @@
-<?php 
-    //arrays - "variable" that holds multiple values at a time
-    $food_1 = "Pasta";
-    $food_2 = "Pizza";
-    $food_3 = "Burger";
-    $food_4 = "Fries";
+<?php
+    //associative array - an array made of key-value pairs
 
-    $foods = array("Pasta", "Pizza", "Burger", "Fries");
-    // or you can use the shorthand version of array declaration this is
-    // called "short array syntax" - ['value1', 'value2', 'value3']
-    // $foods = ["Pasta", "Pizza", "Burger", "Fries"];
-    // echo $foods[0]; // Pasta
-    echo $foods[0]; // Pasta
-    echo $foods[1]; // Pizza
-    echo $foods[2]; // Burger
-    echo $foods[3]; // Fries
-    // echo $foods[4]; // Error: Undefined offset: 4
-    $foods[0] = "Pineapple";
-    array_push($foods, "Pasta", "Ice Cream", "Candy");
-    array_pop($foods); // removes the last element of the array
-    array_shift($foods); // removes the first element of the array
-    echo "<br><h1>Better way to print array values</h1><br>";
-    foreach($foods as $food){
-        echo $food . "<br>";
+    //countries => capitals
+    //id => name
+    //item => price
+
+    $capitals =[
+        "USA" => "Washington DC",
+        "Japan" => "Kyoto",
+        "South Korea" => "Seoul",
+        "India" => "New Delhi",
+    ];
+
+    $capitals["China"] = "Beijing";
+    $capitals["USA"] = "Las Vegas";
+    array_pop($capitals);//remove the last element
+    array_shift($capitals);//remove the first element
+    unset($capitals["South Korea"]);//remove a specific element
+    $keys = array_keys($capitals);//get all the keys
+    $values = array_values($capitals);//get all the values
+    $flipped_capitals = array_flip($capitals);//flip the keys and values return new array
+
+    $num_rows = count($capitals);//get the number of rows
+    $capital_reversed = array_reverse($capitals);//reverse the array return new array
+    foreach($capitals as $key => $value){
+        echo "{$key} => {$value} <br>";
+    };
+    echo "<br>Keys: <br>";
+    foreach($keys as $key){
+        echo "{$key} <br>";
     }
-    echo "<br><h1>Reversed Array</h1><br>";
-    //reversed array
-    $reversed_foods = array_reverse($foods);
-    foreach($reversed_foods as $food){
-        echo $food . "<br>";
+    echo "<br>Values: <br>";
+    foreach($values as $value){
+        echo "{$value} <br>";
     }
 
-    
-    echo "count: ". count($foods);
+    echo "<br>Flipped Capitals: <br>";
+    foreach($flipped_capitals as $key => $value){
+        echo "{$key} => {$value} <br>";
+    }
+
+    echo "<br>Reversed Capitals: <br>";
+    foreach($capital_reversed as $key => $value){
+        echo "{$key} => {$value} <br>";
+    }
