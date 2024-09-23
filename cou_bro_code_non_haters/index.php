@@ -2,14 +2,18 @@
     //functions - write some code onece, reuse when you need it
     // type () after function name invoke
     // ex. add() subtract() multiply() divide()
-function happy_birthday($first_name, $age){
-    echo "Happy Birthday dear {$first_name}! <br>";
-    echo "Happy Birthday to you! <br>";
-    echo "Happy Birthday dear {$first_name}! <br>";
-    echo "You are {$age} years old <br><br>";
 
+    // function is_even($number){
+    //     return $number % 2;
+        
+    // }
 
-}
+    // echo is_even(11); // false
 
-happy_birthday("Twilight",20);
-happy_birthday("Sparkle",21);
+    function hypotenuse(float $a, float $b){
+        $c =  sqrt($a**2 + $b**2);
+        return $c;
+    }
+
+    echo hypotenuse(3, 4); // 5
+    echo hypotenuse(4,5); // 6.4031242374328
