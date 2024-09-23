@@ -1,46 +1,38 @@
-<?php
-    //associative array - an array made of key-value pairs
-
-    //countries => capitals
-    //id => name
-    //item => price
-
-    $capitals =[
-        "USA" => "Washington DC",
-        "Japan" => "Kyoto",
-        "South Korea" => "Seoul",
-        "India" => "New Delhi",
-    ];
-
-    $capitals["China"] = "Beijing";
-    $capitals["USA"] = "Las Vegas";
-    array_pop($capitals);//remove the last element
-    array_shift($capitals);//remove the first element
-    unset($capitals["South Korea"]);//remove a specific element
-    $keys = array_keys($capitals);//get all the keys
-    $values = array_values($capitals);//get all the values
-    $flipped_capitals = array_flip($capitals);//flip the keys and values return new array
-
-    $num_rows = count($capitals);//get the number of rows
-    $capital_reversed = array_reverse($capitals);//reverse the array return new array
-    foreach($capitals as $key => $value){
-        echo "{$key} => {$value} <br>";
-    };
-    echo "<br>Keys: <br>";
-    foreach($keys as $key){
-        echo "{$key} <br>";
-    }
-    echo "<br>Values: <br>";
-    foreach($values as $value){
-        echo "{$value} <br>";
-    }
-
-    echo "<br>Flipped Capitals: <br>";
-    foreach($flipped_capitals as $key => $value){
-        echo "{$key} => {$value} <br>";
-    }
-
-    echo "<br>Reversed Capitals: <br>";
-    foreach($capital_reversed as $key => $value){
-        echo "{$key} => {$value} <br>";
-    }
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="<?php $_SERVER['PHP_SELF'] ?>" method="post">
+        <label for="country">Enter a country:</label>
+        <input type="text" name="country" id="country">
+        <input type="submit" value="Submit">
+    </form>
+    <?php
+        $capitals =[
+            "USA" => "Washington D.C.",
+            "Nigeria" => "Abuja",
+            "Ghana" => "Accra",
+            "Kenya" => "Nairobi",
+            "South Africa" => "Cape Town",
+            "Rwanda" => "Kigali",
+        ];
+        $capitals = array_flip($capitals); 
+        
+        //  if(array_search($_POST['country'], $capitals)){
+        //     echo "The capital of " . $_POST['country'] . " is " . $capitals[$_POST['country']];
+        //  }else{
+        //     echo "The country you entered is not in the list";
+        //  }
+        $result = array_search($_POST['country'], $capitals);
+        if($result){
+            echo "The capital of " . $_POST['country'] . " is " . $result;
+        }else{
+            echo "The country you entered is not in the list";
+        }
+        ?>
+</body>
+</html>
