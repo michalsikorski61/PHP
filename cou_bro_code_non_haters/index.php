@@ -7,31 +7,33 @@
 </head>
 <body>
     <form action="<?= $_SERVER['PHP_SELF'] ?>" method="post">
-        <label for="usrname">Username:</label><br/>
-        <input type="text" name="username" value="<?= $_POST['username'] ?? ''?>"> <br/>
-        <label for="pass">Passwrod:</label> <br/>
-        <input type="password" name="pass" value="<?= $_POST['pass'] ?? ''?>"> <br/>
-        <input style="border-radius:10px; width: 10rem; margin-top:.5rem; margin-left:auto; margin-right:auto; background:green; color:white; font-weight:bold; padding: .3rem" type="submit" name="login" value="Log in">
+        <input type="radio" name="creadit_card" id="credit_card" value="Visa">Visa<br>
+        <input type="radio" name="creadit_card" id="credit_card" value="Mastercard">Mastercasr<br>
+        <input type="radio" name="creadit_card" id="credit_card" value="American Express">American Exmpress <br>
+        <input type="submit" name="confirm" value="Confirm">
     </form>
+    <?php
+        if(isset($_POST['confirm'])){
+            $credit_card = null;
+           if(isset($_POST['creadit_card'])){
+               $credit_card = $_POST['creadit_card'];
+            }
+
+            switch($credit_card){
+                case 'Visa':
+                    echo 'You have selected Visa';
+                    break;
+                case 'Mastercard':
+                    echo 'You have selected Mastercard';
+                    break;
+                case 'American Express':
+                    echo 'You have selected American Express';
+                    break;
+                default:
+                    echo 'Please select a credit card';
+            }
+        }
+
+    ?>
 </body>
 </html>
-<?php
-    // isset() - returns true if variable is set and not null
-    // empty() - returns true if variable is empty, not declared, null, ""
-    foreach($_POST as $key => $value){
-        echo $key . " : " . $value . "<br/>";
-    }
-    if(isset($_POST['login'])){
-        $usrname = $_POST['username'];
-        $pass = $_POST['pass'];
-
-        if(empty($usrname)){
-            echo "Username is required";
-        }elseif(empty($pass)){
-            echo "Password is required";
-        }else{
-            echo "Username: " . $usrname . "<br/>";
-            echo "Password: " . $pass . "<br/>";
-        }
-        
-    }
