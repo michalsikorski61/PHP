@@ -3,37 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>checkboxes</title>
 </head>
 <body>
     <form action="<?= $_SERVER['PHP_SELF'] ?>" method="post">
-        <input type="radio" name="creadit_card" id="credit_card" value="Visa">Visa<br>
-        <input type="radio" name="creadit_card" id="credit_card" value="Mastercard">Mastercasr<br>
-        <input type="radio" name="creadit_card" id="credit_card" value="American Express">American Exmpress <br>
-        <input type="submit" name="confirm" value="Confirm">
+    <input type="checkbox" name="pizza" id="pizza" value="Pizza">Pizza<br/>
+    <input type="checkbox" name="hamburger" id="hamburger" value="Hamburger">Hamburger<br/>
+    <input type="checkbox" name="hotdog" id="hotdog" value="Hotdog">Hotdog<br/>
+    <input type="checkbox" name="taco" id="taco" value="Taco">Taco<br/>
+    <input type="submit" name="submit" value="Ślij">
+
     </form>
     <?php
-        if(isset($_POST['confirm'])){
-            $credit_card = null;
-           if(isset($_POST['creadit_card'])){
-               $credit_card = $_POST['creadit_card'];
+        if(isset($_POST['submit'])){
+            if(isset($_POST['pizza'])){
+                echo "You like {$_POST['pizza']}<br/>";
             }
-
-            switch($credit_card){
-                case 'Visa':
-                    echo 'You have selected Visa';
-                    break;
-                case 'Mastercard':
-                    echo 'You have selected Mastercard';
-                    break;
-                case 'American Express':
-                    echo 'You have selected American Express';
-                    break;
-                default:
-                    echo 'Please select a credit card';
+            if(isset($_POST['hamburger'])){
+                echo "You like {$_POST['hamburger']}<br/>";
+            }
+            if(isset($_POST['hotdog'])){
+                echo "You like {$_POST['hotdog']}<br/>";
+            }
+            if(isset($_POST['taco'])){
+                echo "You like {$_POST['taco']}<br/>";
+            }
+            
+            if(empty($_POST['pizza'])){
+                echo "You DON'T like {$_POST['pizza']}<br/>";
+            }
+            if(empty($_POST['hamburger'])){
+                echo "You DON'T like {$_POST['hamburger']}<br/>";
+            }
+            if(empty($_POST['hotdog'])){
+                echo "You DON'T like {$_POST['hotdog']}<br/>";
+            }
+            if(empty($_POST['taco'])){
+                echo "You DON'T like {$_POST['taco']}<br/>";
             }
         }
-
     ?>
 </body>
 </html>
