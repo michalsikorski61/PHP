@@ -18,11 +18,9 @@
 <?php
     // isset() - returns true if variable is set and not null
     // empty() - returns true if variable is empty, not declared, null, ""
-    // foreach($_POST as $key => $value){
-    //     if(isset($_POST['login'])){
-    //         echo $key . " : " . $value . "<br/>";
-    //     }
-    // }
+    foreach($_POST as $key => $value){
+        echo $key . " : " . $value . "<br/>";
+    }
     if(isset($_POST['login'])){
         $usrname = $_POST['username'];
         $pass = $_POST['pass'];
