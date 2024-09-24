@@ -1,19 +1,40 @@
 <?php
-    //functions - write some code onece, reuse when you need it
-    // type () after function name invoke
-    // ex. add() subtract() multiply() divide()
+$username = "Michalski9";
+$username = strtolower($username);
 
-    // function is_even($number){
-    //     return $number % 2;
-        
-    // }
+echo $username . "<br>";
 
-    // echo is_even(11); // false
+$username = strtoupper($username);
+echo $username . "<br>";
 
-    function hypotenuse(float $a, float $b){
-        $c =  sqrt($a**2 + $b**2);
-        return $c;
-    }
+$username = str_pad($username, 20, "*");
+echo $username . "<br>";
 
-    echo hypotenuse(3, 4); // 5
-    echo hypotenuse(4,5); // 6.4031242374328
+$phone_number = "343-323-231";
+$phone_number = str_replace("-", "/", $phone_number);
+echo $phone_number . "<br>";
+$username = strrev($username);
+$username = str_replace("*", "", $username);
+$username = str_repeat($username, 2);
+echo $username . "<br>";
+$username = str_shuffle($username);
+echo $username . "<br>";
+$equals = strcmp($username, "Michalski9");
+echo $equals . "<br>";
+$lenght = strlen($username);
+echo $lenght . "<br>";
+$pos = strpos($username, "9");
+echo $pos . "<br>";
+$substr = substr($username, 0, 5);
+echo $substr . "<br>";
+//substr all after 5
+$substr = substr($username, 5);
+echo $substr . "<br>";
+//insert spaces 
+$substr = substr($username, 0, 5) . " " . substr($username, 5,8) . " " . substr($username, 8);
+echo $substr . "<br>";
+$tabstr = explode(" ", $substr);
+var_dump($tabstr);
+echo "<br>";
+$str = implode("; ", $tabstr);
+echo $str . "<br>";
