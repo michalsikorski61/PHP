@@ -1,17 +1,18 @@
 <?php
-// 1. MySQLi extension
-// 2. PDO (PHP Data Objects)
-
 include 'database.php';
-?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MySQLi</title>
-</head>
-<body>
-    Hello<br/>
-</body>
-</html>
+$username = 'John Doe';
+$password = 'pass1';
+$password = password_hash($password, PASSWORD_DEFAULT);
+
+$sql = "INSERT INTO users (user, pass) VALUES ('$username', '$password')";//bad passing vars - attack possible
+
+try{
+    mysqli_query($conn, $sql);
+    echo 'User added';
+}catch(mysqli_sql_exception $e){
+    echo 'Query failed <br/>';
+}
+
+
+
+mysqli_close($conn);
