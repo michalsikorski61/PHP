@@ -1,6 +1,10 @@
 <?php
 session_start();
-
+if(!isset($_POST['login']) && !isset($_POST['password']))
+{
+    header("Location: index.php");
+    exit();  //stop further execution if user is not logged in
+}
 require_once 'dbconnect.php';
 
 try{
@@ -18,15 +22,25 @@ if($connection->connect_errno != 0){
 else{
     $login = $_POST['login'];
     $password = $_POST['password'];
+
+    //for security reasons
+    $login = htmlentities($login, ENT_QUOTES, "UTF-8");
+    $password = htmlentities($password, ENT_QUOTES, "UTF-8");
     // echo 'Login: '.$login;
     // echo 'Password: '.$password;
     // $password =  password_hash($password,PASSWORD_DEFAULT);
-    $sql = "SELECT * FROM uzytkownicy WHERE user='$login' AND pass='$password'";
-    if($result = @$connection->query($sql)){
+    
+    if($result = @$connection->query(sprintf("SELECT * FROM uzytkownicy WHERE user='%s' AND pass='%s'",mysqli_real_escape_string($connection,$login), 
+    mysqli_real_escape_string($connection,$password)))){
         $how_many_usrs = $result->num_rows;
         if($how_many_usrs > 0){
             //finded in user
-            $row = $result->fetch_assoc();
+            $row = $result->fetch_assoc(); //before use data from database we have to fetch 
+            //usr's metadata
+            $_SESSION['logged'] = true;
+            $_SESSION['user_id'] = $row['id'];
+
+            //data to show
             $_SESSION['usr_name'] =  $row['user'];
             $_SESSION['drewno'] = $row['drewno'];
             $_SESSION['kamien'] = $row['kamien'];
