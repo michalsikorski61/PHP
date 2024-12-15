@@ -1,16 +1,35 @@
-<div><!DOCTYPE html>
+<?php
+    session_start();
+?>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Piekarnia</title>
+    <title>Osadnicy - browser game</title>
 </head>
 <body>
-    <h1>Zamówienie online</h1>
-    <form action="final.php" method="post">
-        <div>Ile pączków (0.99 PLN/szt)<input type="text" name="paczki" id="paczki"></div>
-        <div>Ile grzebieni (1.29 PLN/szt)<input type="text" name="grzebienie" id="grzebienie"></div>
-        <input type="submit" value="Podsumuj"></div>
+    <blockquote>
+        Tylko martwi ujrzeli koniec wojny - Platon
+    </blockquote>
+
+    <form action="login.php" method="POST">
+        <div>
+            <label for="login">Login:</label>
+            <input type="text" id="login" name="login" required>
+        </div>
+
+        <div>
+            <label for="password">Hasło:</label>
+            <input type="password" id="password" name="password" required>
+        </div>
+        
+        <button type="submit">Log in</button>
     </form>
+    <?php
+        if(isset($_SESSION['error'])){
+           echo $_SESSION['error'];
+        }
+    ?>
 </body>
 </html>
