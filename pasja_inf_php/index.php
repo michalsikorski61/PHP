@@ -11,11 +11,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Osadnicy - browser game</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <blockquote>
         Tylko martwi ujrzeli koniec wojny - Platon
     </blockquote>
+
+    <div class="register_link">
+    <a href="register.php">Rejestracja - załóż darmowe konto!</a>
+    </div>
 
     <form action="login.php" method="POST">
         <div>

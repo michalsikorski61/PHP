@@ -1,0 +1,23 @@
+body{
+    background-color: slategray;
+}
+/* here style for register_link */
+.register_link {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.2em;
+    font-weight: bold;
+    margin-top: 20px;
+    display: block;
+    text-align: center;
+}
+div > label {
+    display: block;
+}
+.error{
+    color: red;
+    font-size: 1.2em;
+    font-weight: bold;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
