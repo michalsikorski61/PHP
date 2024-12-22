@@ -84,8 +84,15 @@
                 // ... Twój kod rejestracji użytkownika ...
                 
                  
+                //remember entered data
+                $_SESSION['fr_nickname'] = $nickname;
+                $_SESSION['fr_email'] = $email;
+                $_SESSION['fr_password'] = $password;
+                $_SESSION['fr_repeatpassword'] = $repeatpassword;
+                if(isset($_POST['regulamin'])) $_SESSION['fr_regulamin'] = true;
                 
-                // echo "Validation passed!";
+
+                
                 require_once 'dbconnect.php';
                 mysqli_report(MYSQLI_REPORT_STRICT); //instead of warnings it will throw exceptions
                 try {
@@ -175,7 +182,12 @@
     <form action="register.php" method="POST">
         <div>
             <label for="nickname">Nickname:</label>
-            <input type="text" id="nickname" name="nickname" required>
+            <input type="text" id="nickname" name="nickname" value="<?php
+                if(isset($_SESSION['fr_nickname'])){
+                    echo $_SESSION['fr_nickname'];
+                    unset($_SESSION['fr_nickname']);
+                }
+            ?>" required>
             <?php
                 if(isset($_SESSION['err_nickname'])){
                     echo '<div class="error">'.$_SESSION['err_nickname'].'</div>';
@@ -186,7 +198,12 @@
 
         <div>
             <label for="email">E-mail:</label>
-            <input type="email" id="email" name="email" required>
+            <input type="email" id="email" name="email" value="<?php
+                if(isset($_SESSION['fr_email'])){
+                    echo $_SESSION['fr_email'];
+                    unset($_SESSION['fr_email']);
+                }
+            ?>" required>
             <?php
                 if(isset($_SESSION['err_email'])){
                     echo '<div class="error">'.$_SESSION['err_email'].'</div>';
@@ -197,7 +214,12 @@
 
         <div>
             <label for="password">Hasło:</label>
-            <input type="password" id="password" name="password" required>
+            <input type="password" id="password" name="password" value="<?php
+                if(isset($_SESSION['fr_password'])){
+                    echo $_SESSION['fr_password'];
+                    unset($_SESSION['fr_password']);
+                }
+            ?>" required>
             <?php
                 if(isset($_SESSION['err_password'])){
                     echo '<div class="error">'.$_SESSION['err_password'].'</div>';
@@ -208,12 +230,22 @@
         
         <div>
             <label for="repeatpassword">Powtorz hasło:</label>
-            <input type="password" id="repeatpassword" name="repeatpassword" required>
+            <input type="password" id="repeatpassword" name="repeatpassword" value="<?php 
+                if(isset($_SESSION['fr_repeatpassword'])){
+                    echo $_SESSION['fr_repeatpassword'];
+                    unset($_SESSION['fr_repeatpassword']);
+                }
+            ?>" required>
         </div>
 
         <div>
             <label>
-                <input type="checkbox" name="regulamin" id="regulamin" required>Akceptuję regulamin
+                <input type="checkbox" name="regulamin" id="regulamin" checked="<?php 
+                    if(isset($_SESSION['fr_regulamin'])){
+                        echo 'checked';
+                        unset($_SESSION['fr_regulamin']);
+                    }
+                ?>" required>Akceptuję regulamin
                 <?php
                     if(isset($_SESSION['err_regulamin'])){
                         echo '<div class="error">'.$_SESSION['err_regulamin'].'</div>';
