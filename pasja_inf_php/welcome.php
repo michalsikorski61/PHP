@@ -6,6 +6,12 @@
     }else{
         unset($_SESSION['register_success']);
     }
+
+    //destroy all session variables
+    session_unset(); //destroy all session variables 
+    // destroy the session
+    session_destroy(); // destroy the session variable list and the session cookie list for the session 
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
