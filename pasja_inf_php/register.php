@@ -49,12 +49,12 @@
         
         //hash password
         $password_hash = password_hash($password, PASSWORD_DEFAULT);
-        echo $password_hash;
+        
 
-        //if all ok
-        if($all_ok == true){
-            echo "Validation passed!";
-            exit; //stop further execution
+        //check if user accepted the rules
+        if(!isset($_POST['regulamin'])){
+            $all_ok = false;
+            $_SESSION['err_regulamin'] = "You have to accept the rules";
         }
 
         
@@ -83,18 +83,37 @@
                 
                 // ... Twój kod rejestracji użytkownika ...
                 
-                echo "Użytkownik zarejestrowany poprawnie!";
+                 //if all ok
+                if($all_ok == true){
+                    // echo "Validation passed!";
+                    require_once 'dbconnect.php';
+                    try{
+                        $connection = new mysqli($host, $user, $pass, $db_name);
+                        
+                        $stmt = $connection->prepare("INSERT INTO uzytkownicy (user, email, pass) VALUES (?,?,?)");
+                        if($stmt === false) {
+                            throw new Exception($connection->error);
+                        }
+                        $stmt->bind_param("sss", $nickname, $email, $password_hash);
+                        $stmt->execute();
+                        
+                    }catch(Exception $e){
+                        echo '<span class="error">Error:Serverver error. We apologize for the inconvenience. Please try again later.</span>';
+                        echo '<br/> Developer info: '.$e;
+                    }
+                }
             } else {
                 // Score za niskie – prawdopodobnie bot
-                echo "Wykryto podejrzane zachowanie (niski score reCAPTCHA).";
-                exit;
+                $all_ok = false;
+                $_SESSION['err_recaptcha'] = "reCAPTCHA score za niskie";
             }
         } else {
             // reCAPTCHA nie powiodła się
-            echo "Błąd weryfikacji reCAPTCHA. Spróbuj ponownie.";
-            exit;
+            $all_ok = false;
+            $_SESSION['err_recaptcha'] = "reCAPTCHA nie powiodła się";
         }
     }
+    
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -150,10 +169,22 @@
         <div>
             <label>
                 <input type="checkbox" name="regulamin" id="regulamin" required>Akceptuję regulamin
+                <?php
+                    if(isset($_SESSION['err_regulamin'])){
+                        echo '<div class="error">'.$_SESSION['err_regulamin'].'</div>';
+                        unset($_SESSION['err_regulamin']);
+                    }
+                ?>
             </label>
         </div>
         <div>
             <input type="hidden" id="g-recaptcha-response" name="g-recaptcha-response">
+            <?php
+                if(isset($_SESSION['err_recaptcha'])){
+                    echo '<div class="error">'.$_SESSION['err_recaptcha'].'</div>';
+                    unset($_SESSION['err_recaptcha']);
+                }
+            ?>
         </div>
         <button type="submit">Zarejestruj się</button>
     </form>
