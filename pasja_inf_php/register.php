@@ -83,26 +83,70 @@
                 
                 // ... Twój kod rejestracji użytkownika ...
                 
-                 //if all ok
-                if($all_ok == true){
-                    // echo "Validation passed!";
-                    require_once 'dbconnect.php';
-                    mysqli_report(MYSQLI_REPORT_STRICT); //instead of warnings it will throw exceptions
-                    try{
-                        $connection = new mysqli($host, $user, $pass, $db_name);
+                 
+                
+                // echo "Validation passed!";
+                require_once 'dbconnect.php';
+                mysqli_report(MYSQLI_REPORT_STRICT); //instead of warnings it will throw exceptions
+                try {
+                    $dsn = "mysql:host=$host;dbname=$db_name;charset=utf8";
+                    $pdo = new PDO($dsn, $user, $pass, [
+                        PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+                        PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+                    ]);
+
+                    //check if email is already in db
+                    $query = $pdo->prepare('SELECT id FROM uzytkownicy WHERE email = :email');
+                    $query->bindParam(':email', $email);
+                    $query->execute();
+                    $result = $query->fetch();
+                    //throw exception if failed 
+                    if($result){
                         
-                        $stmt = $connection->prepare("INSERT INTO uzytkownicy (user, email, pass) VALUES (?,?,?)");
-                        if($stmt === false) {
-                            throw new Exception($connection->error);
-                        }
-                        $stmt->bind_param("sss", $nickname, $email, $password_hash);
-                        $stmt->execute();
-                        
-                    }catch(Exception $e){
-                        echo '<span class="error">Error:Serverver error. We apologize for the inconvenience. Please try again later.</span>';
-                        echo '<br/> Developer info: '.$e;
+                        $all_ok = false;
+                        $_SESSION['err_email'] = "Email is already in use";
+                        // throw new Exception("Email is already in use");
                     }
+
+                    //check if nickname is already in db
+                    $query = $pdo->prepare('SELECT id FROM uzytkownicy WHERE user = :nickname');
+                    $query->bindParam(':nickname', $nickname);
+                    $query->execute();
+                    $result = $query->fetch();
+                    //throw exception if failed 
+                    if($result){
+                        
+                        $all_ok = false;
+                        $_SESSION['err_nickname'] = "Nickname is already in use";
+                        // throw new Exception("Email is already in use");
+                    }
+                    //premium today + 10 days
+                    $premium = date('Y-m-d H:i:s', strtotime('+10 days'));
+                    
+                    //if all ok insert user to dd but throw if query failed
+                    if($all_ok){
+                        $query = $pdo->prepare('INSERT INTO uzytkownicy VALUES (NULL, :nickname, :password, :email,100,100,100, :premium)');
+                        $query->bindParam(':nickname', $nickname);
+                        $query->bindParam(':password', $password_hash);
+                        $query->bindParam(':email', $email);
+                        $query->bindParam(':premium', $premium);
+                        $query->execute();
+                        if($query->rowCount() > 0){
+                            $_SESSION['register_success'] = true;
+                            header('Location: welcome.php');
+                        }else{
+                            throw new Exception("User not added");
+                        }
+                        
+
+                    }
+
+                } catch (Exception $e) {
+                    echo '<span class="error">Error: Server error. We apologize for the inconvenience. Please try again later.</span>';
+                    echo '<br/> Developer info: '.$e;
                 }
+                
+
             } else {
                 // Score za niskie – prawdopodobnie bot
                 $all_ok = false;
