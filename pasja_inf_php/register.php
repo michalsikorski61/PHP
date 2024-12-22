@@ -87,6 +87,7 @@
                 if($all_ok == true){
                     // echo "Validation passed!";
                     require_once 'dbconnect.php';
+                    mysqli_report(MYSQLI_REPORT_STRICT); //instead of warnings it will throw exceptions
                     try{
                         $connection = new mysqli($host, $user, $pass, $db_name);
                         
