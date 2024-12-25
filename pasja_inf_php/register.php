@@ -128,15 +128,16 @@
                         // throw new Exception("Email is already in use");
                     }
                     //premium today + 10 days
-                    $premium = date('Y-m-d H:i:s', strtotime('+10 days'));
+                    // $premium = date('Y-m-d H:i:s', strtotime('+10 days'));
+                    
                     
                     //if all ok insert user to dd but throw if query failed
                     if($all_ok){
-                        $query = $pdo->prepare('INSERT INTO uzytkownicy VALUES (NULL, :nickname, :password, :email,100,100,100, :premium)');
+                        $query = $pdo->prepare('INSERT INTO uzytkownicy VALUES (NULL, :nickname, :password, :email,100,100,100, now()+ INTERVAL 14 DAY)');
                         $query->bindParam(':nickname', $nickname);
                         $query->bindParam(':password', $password_hash);
                         $query->bindParam(':email', $email);
-                        $query->bindParam(':premium', $premium);
+                        // $query->bindParam(':premium', now());
                         $query->execute();
                         if($query->rowCount() > 0){
                             $_SESSION['register_success'] = true;
