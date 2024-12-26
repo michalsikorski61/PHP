@@ -13,20 +13,29 @@
         <main>
             <article>
                 <?php
-                    
                     $to = 'newsletter@dotpy.pl';
-                    // $from = 'Ebooki uczące sztuki <newsletter@dotpy.pl>';
-                    $from = '=?UTF-8?B?'.base64_encode('Ebooki uczące sztuki').'?= <newsletter@dotpy.pl>';
-                    // $replyTo = 'Biuro <newsletter@dotpy.pl>';
-                    $replyTo = '=?UTF-8?B?'.base64_encode('Biuro').'?= <newsletter@dotpy.pl>';
-
+                    $from = 'Ebooki uczące sztuki <newsletter@dotpy.pl>';
+                    $replyTo = 'Biuro <newsletter@dotpy.pl>';  
                     $subject = 'Darmowy, świetny ebook - HTML na przykładach';
                     $subject = '=?UTF-8?B?'.base64_encode($subject).'?=';
-                    $message = 'Witaj!'."\r\n\r\n".' Dziękujemy za zapisanie się do newslettera. W załączniku znajdziesz ebooka, który nauczy Cię sztuki programowania.';
-                    $message = base64_encode($message);
-
-                    $headers = 'Content-Type: text/plain; charset=utf-8'."\r\n";
-                    $headers .= 'Content-Transfer-Encoding: base64'."\r\n";
+                    $message = '<html>
+                                    <head>
+                                    <title>Twój darmowy ebook!</title>
+                                    </head>
+                                    <body>
+                                    <h1>Dzień dobry!</h1>
+                                    <p>Oto link do naszego świetnego ebooka: <a href="https://domena.pl/ebook.pdf">POBIERZ EBOOKA</a>
+                                    </p>
+                                    <hr>
+                                    <p>Administratorem Twoich danych osobowych jest:</p>
+                                    <p>Ebooki uczące sztuki Sp.z.o_O, ul. Wiejska 4/6/8, 00-902 Warszawa</p>
+                                    <p>Wypisz się z newslettera: <a href="https://domena.pl/unsubscribe">UNSUB</a>
+                                    </p>
+                                    </body>
+                                    </html>
+                                    ';
+                    $headers = 'MIME-Version: 1.0'."\r\n";
+                    $headers .= 'Content-Type: text/html; charset=utf-8'."\r\n";
                     $headers .= 'From: '.$from."\r\n";
                     $headers .= 'Reply-To: '.$replyTo."\r\n";
                     mail($to, $subject, $message, $headers);
