@@ -1,6 +1,15 @@
 <?php
 session_start();
 
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+use PHPMailer\PHPMailer\SMTP;
+
+//require exception, phpmailer, smtp
+require 'PHPMailer/src/Exception.php';
+require 'PHPMailer/src/PHPMailer.php';
+require 'PHPMailer/src/SMTP.php';
+
 
 if(isset($_POST['email'])){
     $email = filter_input(INPUT_POST, 'email', FILTER_VALIDATE_EMAIL);
@@ -29,6 +38,52 @@ if(isset($_POST['email'])){
             $query->bindValue(':email', $email, PDO::PARAM_STR); // bind value to query with pdo style 
             $query->execute(); // execute query
             //pdo automatically close connection
+
+            //send email thanks to phpmailer
+            try{
+                //debug on
+                $mail = new PHPMailer();
+                
+                $mail->isSMTP();
+                $mail->SMTPDebug = SMTP::DEBUG_SERVER;
+                $mail->Host = 'smtp.gmail.com';
+                $mail->Port = 465;
+                $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
+                $mail->SMTPAuth = true;
+                $mail->Username = 'dawiddowod00@gmail.com';
+                $mail->Password = 'bkafqnxdyxyldjjn';
+
+                //utf-8
+                $mail->CharSet = 'UTF-8';
+                $mail->setFrom('newsletter@dotpy.pl', 'Ebooki uczące sztuki');
+                $mail->addAddress($email);
+                $mail->addReplyTo('newsletter@dotpy.pl ', 'Biuro');
+                $mail->isHTML(true);
+                $mail->Subject = 'Darmowy, świetny ebook - HTML na przykładach';
+                $mail->Body ="
+                    <html>
+                        <head>
+                            <title>Twój darmowy ebook!</title>
+                        </head>
+                        <body>
+                            <h1>Dzień dobry!</h1>
+                            <p>Oto link do naszego świetnego ebooka: <a href='https://domena.pl/ebook.pdf'>POBIERZ EBOOKA</a>
+                            </p>
+                            <hr>
+                            <p>Administratorem Twoich danych osobowych jest:</p>
+                            <p>Ebooki uczące sztuki Sp.z.o_O, ul. Wiejska 4/6/8, 00-902 Warszawa</p>
+                            <p>Wypisz się z newslettera: <a href='https://domena.pl/unsubscribe'>UNSUB</a>
+                            </p>
+                        </body>
+                    </html>
+                ";
+                $mail->addAttachment('img/fake-book.jpg');
+                $mail->send();
+
+
+            }catch(Exception $e){
+                echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+            }
         }
     }
 }else{
