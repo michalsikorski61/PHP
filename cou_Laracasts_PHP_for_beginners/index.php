@@ -11,16 +11,30 @@
     <h1>Recomended Books</h1>
     <?php
         $books = [
-            "Do Androids Dream of Electric Sheep",
-            "The Langoliers",
-            "Hail Mary"
+            [
+                "title" => "Do Androids Dream of Electric Sheep",
+                "author" => "Philip K. Dick",
+                "purchaseUrl" => "https://dotpy.pl",
+            ],
+            [
+                "title" => "The Langoliers",
+                "author" => "Stephen King",
+                "purchaseUrl" => "https://dotpy.pl",
+            ],
+            [
+                "title" => "Hail Mary",
+                "author" => "Andy Weir",
+                "purchaseUrl" => "https://dotpy.pl",
+            ],
         ];
 
     ?>
 
     <ul>
         <?php foreach($books as $book): ?>
-            <li><?= $book ?></li>
+            <li><a href="<?= $book['purchaseUrl'] ?>">
+                <?= $book['title'] ?>
+            </a></li>
         <?php endforeach; ?>
     </ul>
     
