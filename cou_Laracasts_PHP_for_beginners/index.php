@@ -14,27 +14,42 @@
             [
                 "title" => "Do Androids Dream of Electric Sheep",
                 "author" => "Philip K. Dick",
+                "releaseYear" => 1923,
                 "purchaseUrl" => "https://dotpy.pl",
             ],
             [
                 "title" => "The Langoliers",
                 "author" => "Stephen King",
+                "releaseYear" => 1723,
                 "purchaseUrl" => "https://dotpy.pl",
             ],
             [
                 "title" => "Hail Mary",
                 "author" => "Andy Weir",
+                "releaseYear" => 2009,
                 "purchaseUrl" => "https://dotpy.pl",
             ],
         ];
 
-    ?>
+        function filterByAuthor($books){
+             $filteredBooks = [];
 
+             foreach($books as $book){
+                if($book['author'] === 'Andy Weir'){
+                    $filteredBooks[] = $book;
+                }
+             }
+             return $filteredBooks;
+        }
+
+        // filterByAuthor(); //call the fn
+    ?>
+ 
     <ul>
-        <?php foreach($books as $book): ?>
-            <li><a href="<?= $book['purchaseUrl'] ?>">
-                <?= $book['title'] ?>
-            </a></li>
+        <?php foreach(filterByAuthor($books) as $book): ?>
+                <li><a href="<?= $book['purchaseUrl'] ?>">
+                    <?= "{$book['title']} ({$book['releaseYear']}) - {$book['author']}" ?>
+                </a></li>
         <?php endforeach; ?>
     </ul>
     
