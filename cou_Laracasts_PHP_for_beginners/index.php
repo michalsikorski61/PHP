@@ -31,18 +31,18 @@
             ],
         ];
 
-        $filteredBooks = function ($books,$author){
-             $filteredBooks = [];
+        function filter($items,$key,$value){
+             $filteredItems = [];
 
-             foreach($books as $book){
-                if($book['author'] === $author){
-                    $filteredBooks[] = $book;
+             foreach($items as $item){
+                if($item[$key] === $value){
+                    $filteredItems[] = $item;
                 }
              }
-             return $filteredBooks;
-        };
+             return $filteredItems;
+        }
 
-       $filteredBooks = $filteredBooks($books,'Andy Weir');
+       $filteredBooks = filter($books,'releaseYear',1723);
     ?>
  
     <ul>
