@@ -50,3 +50,5 @@
        $filteredBooks = array_filter($books, function ($book){
         return $book['releaseYear'] > 2008;
        });
+
+       require "index.view.php";
