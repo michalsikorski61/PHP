@@ -1,5 +1,4 @@
 <?php
-require('functions.php');
-dd($_SERVER['REQUEST_URI']);
+require 'functions.php';
 $heading = "Contact Us";
 require "views/contact.view.php";
