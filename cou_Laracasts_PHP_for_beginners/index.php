@@ -11,10 +11,14 @@ $routes = [
     '/php/nauka_php/_2024/GITHUB_POWERED/PHP_JOURNEY/cou_Laracasts_PHP_for_beginners/about' => 'controllers/about.php',
     '/php/nauka_php/_2024/GITHUB_POWERED/PHP_JOURNEY/cou_Laracasts_PHP_for_beginners/contact' => 'controllers/contact.php'
 ];
+
+function abort($status_code = 404){
+    http_response_code($status_code);
+    $heading = $status_code;
+    require "views/{$status_code}.view.php";
+}
 if(array_key_exists($uri,$routes)){
     require $routes[$uri];
 }else{
-    http_response_code(404);
-    $heading = '404 Not Found';
-    require 'views/404.view.php';
+    abort();
 }
