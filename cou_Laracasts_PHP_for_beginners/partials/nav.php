@@ -11,8 +11,8 @@
               <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
                
               <a href="/php/nauka_php/_2024/GITHUB_POWERED/PHP_JOURNEY/cou_Laracasts_PHP_for_beginners/" class="<?= urlIs('/php/nauka_php/_2024/GITHUB_POWERED/PHP_JOURNEY/cou_Laracasts_PHP_for_beginners/') ? 'bg-gray-900 ' : '';?> rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white" aria-current="page">Home</a>
-              <a href="/php/nauka_php/_2024/GITHUB_POWERED/PHP_JOURNEY/cou_Laracasts_PHP_for_beginners/about.php" class="<?= urlIs('/php/nauka_php/_2024/GITHUB_POWERED/PHP_JOURNEY/cou_Laracasts_PHP_for_beginners/about.php') ? 'bg-gray-900' : '' ; ?> rounded-md px-3 py-2 text-sm font-medium  text-gray-300 hover:bg-gray-700  hover:text-white">About</a>
-              <a href="/php/nauka_php/_2024/GITHUB_POWERED/PHP_JOURNEY/cou_Laracasts_PHP_for_beginners/contact.php" class="<?= urlIs('/php/nauka_php/_2024/GITHUB_POWERED/PHP_JOURNEY/cou_Laracasts_PHP_for_beginners/contact.php') ? 'bg-gray-900 ' : ''; ?> rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Contact</a>
+              <a href="/php/nauka_php/_2024/GITHUB_POWERED/PHP_JOURNEY/cou_Laracasts_PHP_for_beginners/about" class="<?= urlIs('/php/nauka_php/_2024/GITHUB_POWERED/PHP_JOURNEY/cou_Laracasts_PHP_for_beginners/about') ? 'bg-gray-900' : '' ; ?> rounded-md px-3 py-2 text-sm font-medium  text-gray-300 hover:bg-gray-700  hover:text-white">About</a>
+              <a href="/php/nauka_php/_2024/GITHUB_POWERED/PHP_JOURNEY/cou_Laracasts_PHP_for_beginners/contact" class="<?= urlIs('/php/nauka_php/_2024/GITHUB_POWERED/PHP_JOURNEY/cou_Laracasts_PHP_for_beginners/contact') ? 'bg-gray-900 ' : ''; ?> rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Contact</a>
              
               
             </div>
