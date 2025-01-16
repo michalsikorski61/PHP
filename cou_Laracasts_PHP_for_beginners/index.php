@@ -3,12 +3,7 @@
 // Include the functions file
 require ('functions.php');
 require ('Database.php');
-$config = [
-    'host' => 'localhost',
-    'port' => 3306,
-    'dbname' => 'serwer90089_laracastcphpbeggine',
-    'charset' => 'utf8mb4'
-];
+$config = require ('config.php');
 
 $db = new Database($config);
 
