@@ -2,7 +2,7 @@
 class Database{
 
     public $connection;
-    public function __construct($config,$usr='serwer90089_laracastcphpbeggine',$pass='GR@vo87PQdXgMiJ9')
+    public function __construct($config,$usr='serwer90089_laracastcphpbeggine',$pass='>7K=><mN%YOEQ-kh')
     {
         
 
@@ -15,13 +15,13 @@ class Database{
     }
 
 
-    public function query($query){
+    public function query($query,$params = []){
         //connect to MySQL database
        
 
         $statement = $this->connection->prepare($query); 
 
-        $statement->execute();
+        $statement->execute($params);
 
         return $statement;
 
