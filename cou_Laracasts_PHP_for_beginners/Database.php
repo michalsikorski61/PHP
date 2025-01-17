@@ -2,7 +2,7 @@
 class Database{
 
     public $connection;
-    public function __construct($config,$usr='serwer90089_laracastcphpbeggine',$pass='>7K=><mN%YOEQ-kh')
+    public function __construct($config,$usr='serwer90089_laracastcphpbeggine',$pass='aHZcTX_ASF_4AfrA')
     {
         
 
