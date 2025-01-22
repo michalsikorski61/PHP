@@ -1,15 +1,10 @@
 <?php
-// Get the current URI
-$uri = parse_url($_SERVER['REQUEST_URI'])['path'];
+
+$routes = require('routes.php');
 
 
-$routes = [
-    '/laracasts_php_begginers/' => 'controllers/index.php',
-    '/laracasts_php_begginers/about' => 'controllers/about.php',
-    '/laracasts_php_begginers/notes' => 'controllers/notes.php',
-    '/laracasts_php_begginers/note' => 'controllers/note.php',
-    '/laracasts_php_begginers/contact' => 'controllers/contact.php'
-];
+
+
 
 function abort($status_code = 404){
     http_response_code($status_code);
@@ -23,5 +18,6 @@ function routeToController($uri, $routes){
         abort();
     }
 }
-
+// Get the current URI
+$uri = parse_url($_SERVER['REQUEST_URI'])['path'];
 routeToController($uri, $routes);
