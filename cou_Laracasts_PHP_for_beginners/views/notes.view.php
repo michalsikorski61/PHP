@@ -12,9 +12,11 @@
               </a></li>
           <?php endforeach; ?>
         </ul>
-        <p>
-          <a href="/laracasts_php_begginers/notes/create" class="mt-5 text-blue-500 hover:underline">Create Note</a>
-        </p>
+        <div class="flex flex-col space-y-5">
+        <a href="/laracasts_php_begginers/notes/create" class="!mt-5 text-blue-500 hover:underline block">Create Note</a>
+
+        </div>
+
     </div>
   </main>
 <?php require('views/partials/footer.php'); ?>
