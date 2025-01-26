@@ -1,6 +1,6 @@
 <?php
 $config = require ('config.php');
-require 'Response.php';
+require __DIR__.'/../Response.php';
 
 $db = new Database($config['database']);
 $heading = "Note";
@@ -15,4 +15,4 @@ authorize($note['user_id'] === $curentUserId);
 
 
 
-require "views/note.view.php";
+require "views/notes/show.view.php";
