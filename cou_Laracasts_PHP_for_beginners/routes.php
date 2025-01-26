@@ -1,9 +1,9 @@
 <?php
 return [
-    '/laracasts_php_begginers/' => 'controllers/index.php',
-    '/laracasts_php_begginers/about' => 'controllers/about.php',
-    '/laracasts_php_begginers/notes' => 'controllers/notes/index.php',
-    '/laracasts_php_begginers/note' => 'controllers/notes/show.php',
-    '/laracasts_php_begginers/notes/create' => 'controllers/notes/create.php',
-    '/laracasts_php_begginers/contact' => 'controllers/contact.php',
+    '/' => 'controllers/index.php',
+    '/about' => 'controllers/about.php',
+    '/notes' => 'controllers/notes/index.php',
+    '/note' => 'controllers/notes/show.php',
+    '/notes/create' => 'controllers/notes/create.php',
+    '/contact' => 'controllers/contact.php',
 ];

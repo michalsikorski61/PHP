@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html  class="h-full bg-gray-100">
+<html lang="pl" class="h-full bg-gray-100">
 <head>
     <meta charset="UTF-8">
     <!-- <meta http-equiv="refresh" content="2"> -->

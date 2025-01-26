@@ -3,7 +3,7 @@ class Database{
 
     public $connection;
     public $statement;
-    public function __construct($config,$usr='serwer90089_laracastcphpbeggine',$pass='aHZcTX_ASF_4AfrA')
+    public function __construct($config,$usr='root',$pass='')
     {
         
 
