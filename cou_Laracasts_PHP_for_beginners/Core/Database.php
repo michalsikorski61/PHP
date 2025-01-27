@@ -1,4 +1,8 @@
 <?php
+
+namespace Core;
+
+use PDO;
 class Database{
 
     public $connection;
@@ -11,7 +15,7 @@ class Database{
         // $dsn = "mysql:host={$config['host']};port={$config['port']};dbname={$config['dbname']};user=serwer90089_laracastcphpbeggine;password=;charset={$config['charset']}";
         
         $this->connection = new PDO($dsn,$usr,$pass,[
-            PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC
+            \PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC
         ]); //data source name (a str that dsdeclares connection to the db)
     }
 
