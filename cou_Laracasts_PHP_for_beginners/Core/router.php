@@ -9,7 +9,7 @@ $routes = require base_path('routes.php');
 function abort($status_code = 404){
     http_response_code($status_code);
     $heading = $status_code;
-    require "views/{$status_code}.view.php";
+    require base_path("views/{$status_code}.view.php");
 }
 function routeToController($uri, $routes){
     if(array_key_exists($uri,$routes)){

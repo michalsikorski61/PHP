@@ -1,4 +1,7 @@
 <?php
+
+use Core\Response;
+
 function dd($var){
     echo "<pre>";
     var_dump($var);

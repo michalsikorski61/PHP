@@ -2,6 +2,7 @@
 
 use Core\Database;
 use Core\Validator;
+
 base_path('Validator.php');
 
 $config = require base_path('config.php');
