@@ -6,7 +6,7 @@ $config = require base_path('config.php');
 
 
 $db = new Database($config['database']);
-$curentUserId = 12;
+$curentUserId = 1;
 
 if($_SERVER['REQUEST_METHOD'] === 'POST'){
 
