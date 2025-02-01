@@ -5,11 +5,7 @@ class Router{
     protected  $routes = [];
 
     public function add($method, $uri, $controller){
-        $this->routes[] = [
-            'uri' => $uri,
-            'controller' => $controller,
-            'method' => strtoupper($method),
-        ];
+        $this->routes[] = compact('method', 'uri', 'controller');
     }
     public function get($uri, $controller){
         $this->add('GET',$uri,$controller);
