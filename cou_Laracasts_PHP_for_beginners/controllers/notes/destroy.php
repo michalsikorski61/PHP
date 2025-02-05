@@ -2,10 +2,9 @@
 use Core\App;
 use Core\Database;
 
-// $config = require base_path('config.php');
-// $db = new Database($config['database']);
-$db = App::container()->resolve('Core\Database');
-dd($db);
+
+$db = App::resolve(Database::class); // the same as $db = new Database($config['database']);
+
 $curentUserId = 1;
 
 
