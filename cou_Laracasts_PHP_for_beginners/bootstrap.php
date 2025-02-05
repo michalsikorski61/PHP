@@ -1,5 +1,5 @@
 <?php
-
+use core\App;
 use Core\Container;
 use Core\Database;
 
@@ -10,7 +10,4 @@ $container->bind('Core\Database', function() {
     return new Database($config['database']);
 });
 
-$db = $container->resolve('Core\Database');
-
-// dd($db); // object(Core\Database)
-$container->resolve('dfsfsfsfs');
+App::setContainer($container);
