@@ -21,18 +21,21 @@ $errors = [];
 if(! Validator::string($_POST['body'], $min = 10, $max = 2000)){
     $errors['body'] = "Please enter a note between 10 and 2000 characters";
 }
-// if no validation errrors, update the record in the note database table
-if(empty($errors)){
-    $db->query('UPDATE notes SET body = :body WHERE id = :id',[
+// if  validation errrors, return view with errors
+if(count($errors)){
+    
+    return view('notes/edit',[
+        'heading' => 'Edit Note',
+        'note' => $note,
+        'errors' => $errors,
+    ]);
+}
+
+$db->query('UPDATE notes SET body = :body WHERE id = :id',[
         'body' => $_POST['body'],
         'id' => $_POST['id']
     ]);
-    header('Location: /notes');
-    exit();
-}
 
-view('notes/edit',[
-    'heading' => 'Edit Note',
-    'note' => $note,
-    'errors' => $errors,
-]);
+//redirect the user
+header('Location: /notes');
+exit();
