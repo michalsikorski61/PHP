@@ -33,6 +33,7 @@
         </div>
     <div class="bg-gray-59 px-4 py-3 text-right sm:px-6 flex items-center justify-end gap-x-4">
       <input type="hidden" name="_method" value="PATCH">
+      <input type="hidden" name="id" value="<?= $note['id'] ?>">
       <a href="/notes" class="rounded-md bg-gray-600 px-3 py-2 text-sm font-semibold text-white shadow-xs hover:bg-gray-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Cancel</a>
       <button type="submit" class="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-xs hover:bg-indigo-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Update</button>
 
