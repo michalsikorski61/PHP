@@ -14,7 +14,7 @@
         </ul>
         <div class="flex flex-col space-y-5">
         <a href="/notes/create" class="!mt-5 text-blue-500 hover:underline block">Create Note</a>
-
+        
         </div>
 
     </div>

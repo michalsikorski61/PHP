@@ -7,7 +7,7 @@ class Database{
 
     public $connection;
     public $statement;
-    public function __construct($config,$usr='root',$pass='')
+    public function __construct($config,$usr='twoj_uzytkownik',$pass='twoje_mocne_haslo')
     {
         
 

@@ -1,5 +1,5 @@
 <?php
-use core\App;
+use Core\App;
 use Core\Container;
 use Core\Database;
 
