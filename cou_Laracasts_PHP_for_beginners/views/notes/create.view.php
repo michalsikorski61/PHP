@@ -19,7 +19,7 @@
                   <?php
                     if(isset($errors['body'])): ?>
                       <p class="text-red-500 text-xs mt-2"><?= $errors['body'] ?></p>
-                    <?php endif; ?>
+                  <?php endif; ?>
                 </div>
                 
               </div>
