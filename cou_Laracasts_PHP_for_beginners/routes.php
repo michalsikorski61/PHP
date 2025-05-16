@@ -15,5 +15,5 @@ $router->get('/notes/create', 'controllers/notes/create.php');
 $router->post('/notes/create', 'controllers/notes/store.php');
 $router->get('/webhook', 'controllers/notes/webhook.php');
 
-$router->get('/register', 'controllers/registration/create.php');
+$router->get('/register', 'controllers/registration/create.php')->only('guest');
 $router->post('/register', 'controllers/registration/store.php');
