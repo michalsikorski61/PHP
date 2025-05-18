@@ -3,33 +3,39 @@
 use Core\App;
 use Core\Database;
 use Core\Validator;
+use Http\Forms\LoginForm;
 
 // log in the usr if the creadentials are correct
 $db = App::resolve(Database::class);
 //check form is valid
 $email = $_POST['email'];
 $password = $_POST['password'];
-$errors = [];
 
-if(!Validator::email($email)){
-    $errors['email'] = "Please enter a valid email address";
+$form = new LoginForm();
+if(!$form->validate($email, $password)){
+    return view('session/create',[
+        'heading' => 'login',
+        'errors' => $form->errors(),
+    ]);
 }
+// $errors = [];
 
-if(!Validator::string($password, )){
-    $errors['password'] = "Please enter a password betweent 8 and 255 characters";
-}
-//match the credentails
+// if(!Validator::email($email)){
+//     $errors['email'] = "Please enter a valid email address";
+// }
+
+// if(!Validator::string($password, )){
+//     $errors['password'] = "Please enter a password betweent 8 and 255 characters";
+// }
+// //match the credentails
 $user = $db->query('SELECT * FROM users WHERE email = :email', [
     'email' => $email
 ])->find();
 
 
-if(!empty($errors)){
-    return view('session/create.view',[
-        'heading' => 'login',
-        'errors' => $errors,
-    ]);
-}
+// if(!empty($errors)){
+//     
+// }
 
 if($user){
     if(password_verify($password, $user['password'])){
