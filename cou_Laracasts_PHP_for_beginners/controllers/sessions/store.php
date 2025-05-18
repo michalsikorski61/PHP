@@ -31,25 +31,19 @@ if(!empty($errors)){
     ]);
 }
 
-if(!$user){
-    return view('sessions/create',[
-        'heading' => 'login',
-        'errors' => [
-            'email' => 'Invalid email'
-        ]
+if($user){
+    if(password_verify($password, $user['password'])){
+    login($user);
+
+    header('Location: /notes');
+    exit();
+    }
+}
+
+
+return view('sessions/create',[
+    'heading' => 'login error',
+    'errors' => [
+        'email' => 'Invalid credentials'
+    ]
     ]);
-}
-
-//we have a user, but we don't know if the password provided matches what we have in the database
-if(!password_verify($password, $user['password'])){
-    return view('sessions/create',[
-        'heading' => 'login',
-        'errors' => [
-            'password' => 'Invalid password'
-        ]
-        ]);
-}
-
-login($user);
-
-header('Location: /notes');
