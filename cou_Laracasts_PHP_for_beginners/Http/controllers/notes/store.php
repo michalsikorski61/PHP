@@ -20,7 +20,7 @@ if(!empty($errors)){
 
 $db->query('INSERT INTO notes (id,body,user_id) VALUES(null,:body, :user_id)',[
     'body' => $_POST['body'],
-    'user_id' => 1
+    'user_id' => $_SESSION['user']['id'],
 ]);
 
 header('Location: /notes');

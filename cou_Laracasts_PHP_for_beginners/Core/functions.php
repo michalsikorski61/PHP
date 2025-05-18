@@ -33,3 +33,21 @@ function view($path, $attributes = []){
     extract($attributes);
     require base_path("views/{$path}.view.php");
 }
+
+function login($user){
+    $_SESSION['user'] = [
+        'email' => $user['email'],
+        'id' => $user['id'],
+    ];
+    session_regenerate_id(true);
+}
+
+function logout(){
+    //log usr out
+$_SESSION = [];
+session_destroy();
+//cookie params
+$cookieParams = session_get_cookie_params();
+
+setcookie('PHPSESSID', '', time() - 3600,$cookieParams['path'], $cookieParams['domain'], $cookieParams['secure'], $cookieParams['httponly']);
+}
