@@ -26,12 +26,12 @@ if(!empty($errors)){
 }
 //check if account already exists
 $db = App::resolve(Database::class);
-$result = $db->query('SELECT * FROM users WHERE email = :email',[
+$user = $db->query('SELECT * FROM users WHERE email = :email',[
     'email' => $email
 ])->find();
 
 //if yes, redirect to login
-if($result){
+if($user){
     header('Location: /');
     exit();
 }
@@ -39,11 +39,9 @@ if($result){
 //if no, create a new account in the database, log in, and redirect to the notes page
 $db->query('INSERT INTO users (email, password) VALUES (:email, :password)',[
     'email' => $email,
-    'password' => $password,
+    'password' => password_hash($password, PASSWORD_DEFAULT),
 ]);
 
-$_SESSION['user'] = [
-    'email' => $email,
-];
+login($user);
 header('Location: /notes');
 exit();
