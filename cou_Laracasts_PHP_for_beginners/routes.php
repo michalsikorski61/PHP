@@ -17,5 +17,6 @@ $router->get('/webhook', 'controllers/notes/webhook.php');
 
 $router->get('/register', 'controllers/registration/create.php')->only('guest');
 $router->post('/register', 'controllers/registration/store.php');
-$router->get('/login', 'controllers/sessions/create.php')->only('guest');
-$router->post('/sessions', 'controllers/sessions/store.php');
+$router->get('/login', 'controllers/session/create.php')->only('guest');
+$router->post('/session', 'controllers/session/store.php');
+$router->delete('/session', 'controllers/session/destroy.php')->only('auth');

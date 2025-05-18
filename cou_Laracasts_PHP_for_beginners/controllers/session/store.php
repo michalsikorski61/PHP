@@ -25,7 +25,7 @@ $user = $db->query('SELECT * FROM users WHERE email = :email', [
 
 
 if(!empty($errors)){
-    return view('sessions/create.view',[
+    return view('session/create.view',[
         'heading' => 'login',
         'errors' => $errors,
     ]);
@@ -41,7 +41,7 @@ if($user){
 }
 
 
-return view('sessions/create',[
+return view('session/create',[
     'heading' => 'login error',
     'errors' => [
         'email' => 'Invalid credentials'

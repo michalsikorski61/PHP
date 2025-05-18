@@ -1,6 +1,6 @@
 <?php
 $errors = [];
-view('sessions/create', [
+view('session/create', [
     'heading' => 'login',
     'errors' => $errors,
 
