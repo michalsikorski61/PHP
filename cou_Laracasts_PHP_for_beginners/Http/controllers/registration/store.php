@@ -1,5 +1,5 @@
 <?php
-
+use Core\Authenticator;
 use Core\Validator;
 use Core\App;
 use Core\Database;
