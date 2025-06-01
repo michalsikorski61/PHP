@@ -1,6 +1,7 @@
 <?php
 
 use Core\Authenticator;
+use Core\Session;
 use Core\Validator;
 use Http\Forms\LoginForm;
 
@@ -28,7 +29,7 @@ if($form->validate($email, $password)){
     }
 }
 
-$_SESSION['_flash']['errors'] = $form->errors();
+Session::flash('errors', $form->errors());
 return redirect('/login');
 
 

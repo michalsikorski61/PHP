@@ -1,4 +1,6 @@
 <?php
+
+use Core\Session;
 session_start();
 
 ini_set('display_errors', 1);
@@ -32,4 +34,4 @@ $method = $_POST["_method"] ?? $_SERVER['REQUEST_METHOD'];
 
 $router->route($uri,$method);
 
-unset($_SESSION['_flash']['errors']);    
+Session::unflash();
