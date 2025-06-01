@@ -33,5 +33,6 @@ $method = $_POST["_method"] ?? $_SERVER['REQUEST_METHOD'];
 
 
 $router->route($uri,$method);
-
-Session::unflash();
+// Unflash the session data after processing
+Session::unflash('errors');
+Session::unflash('old');

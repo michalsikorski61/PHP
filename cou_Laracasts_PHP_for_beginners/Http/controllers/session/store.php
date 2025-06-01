@@ -30,6 +30,10 @@ if($form->validate($email, $password)){
 }
 
 Session::flash('errors', $form->errors());
+//we need to store the old input so that we can repopulate the form because post data is not available after a redirect
+Session::flash('old', [
+    'email' => $_POST['email'],
+]);
 return redirect('/login');
 
 
