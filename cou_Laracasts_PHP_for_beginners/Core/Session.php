@@ -12,10 +12,10 @@ class Session{
     }
 
     public static function get($key, $default = null){
-        // if(isset($_SESSION['_flash'][$key])){
-        //     return  $_SESSION['_flash'][$key];
-        // }
-        // return $_SESSION[$key] ?? $default;     
+         if(isset($_SESSION['_flash'][$key])){
+             return  $_SESSION['_flash'][$key];
+         }
+         return $_SESSION[$key] ?? $default;     
         /*
         orher way to write the above code
         return $_SESSION['_flash'][$key] ?? $_SESSION[$key] ?? $default;
@@ -43,4 +43,5 @@ class Session{
 
         setcookie('PHPSESSID', '', time() - 3600,$cookieParams['path'], $cookieParams['domain'], $cookieParams['secure'], $cookieParams['httponly']);
     }
+    
 }
