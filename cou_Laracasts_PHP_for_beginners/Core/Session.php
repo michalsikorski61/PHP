@@ -43,4 +43,5 @@ class Session{
 
         setcookie('PHPSESSID', '', time() - 3600,$cookieParams['path'], $cookieParams['domain'], $cookieParams['secure'], $cookieParams['httponly']);
     }
+    
 }
