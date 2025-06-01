@@ -12,8 +12,8 @@ $email = $_POST['email'];
 $password = $_POST['password'];
 
 $form = new LoginForm();
-if(!Validator::string($password, )){
-    $errors['password'] = "Please enter a password betweent 8 and 255 characters";
+if(!Validator::string($password,20,255)){
+    $errors['password'] = "Please enter a password between 2 and 255 characters";
 }
 if(!Validator::email($email)){  
     $errors['email'] = "Please enter a valid email address";
@@ -28,19 +28,8 @@ if($form->validate($email, $password)){
     }
 }
 
-
-
-
-return view('session/create',[
-        'heading' => 'login',
-        'errors' => $form->errors(),
-    ]); 
-//match the credentails
-
-
-// if(!empty($errors)){
-//     
-// }
+$_SESSION['_flash']['errors'] = $form->errors();
+return redirect('/login');
 
 
 
