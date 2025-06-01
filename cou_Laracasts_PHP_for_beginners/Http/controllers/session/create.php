@@ -1,7 +1,7 @@
 <?php
-$errors = [];
+
 view('session/create', [
     'heading' => 'login',
-    'errors' => $errors,
+    'errors' => $_SESSION['_flash']['errors'] ?? [],
 
 ]);

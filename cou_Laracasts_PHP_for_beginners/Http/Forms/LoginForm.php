@@ -9,10 +9,10 @@ class LoginForm{
         
 
         if(!Validator::email($email)){
-            $$this->errors['email'] = "Please enter a valid email address";
+            $this->errors['email'] = "Please enter a valid email address";
         }
 
-        if(!Validator::string($password, 1,3)){
+        if(!Validator::string($password, 8,255)){
             $this->errors['password'] = "Please enter a password betweent 8 and 255 characters";
         }
        
@@ -24,7 +24,7 @@ class LoginForm{
         //         'errors' => $errors,
         //     ]);
         // }
-        return empty(!$this->errors);
+        return empty($this->errors);
     }
 
     public function errors(){
