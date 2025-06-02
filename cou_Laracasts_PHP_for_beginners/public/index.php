@@ -1,6 +1,8 @@
 <?php
 
 use Core\Session;
+use Core\ValidationException;
+
 session_start();
 
 ini_set('display_errors', 1);
@@ -32,7 +34,16 @@ $method = $_POST["_method"] ?? $_SERVER['REQUEST_METHOD'];
 
 
 
-$router->route($uri,$method);
+try{
+    $router->route($uri,$method);
+}catch(ValidationException $exception){
+     Session::flash('errors', $exception->errors);
+//we need to store the old input so that we can repopulate the form because post data is not available after a redirect
+    Session::flash('old', $exception->old);
+
+    return redirect($router->previusUrl());
+
+}
 // Unflash the session data after processing
 Session::unflash('errors');
 Session::unflash('old');
