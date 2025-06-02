@@ -1,0 +1,19 @@
+{
+    "name": "michalski/cou_laracasts_php_for_beginners",
+    "autoload": {
+        "psr-4": {
+            "Michalski\\CouLaracastsPhpForBeginners\\": "src/",
+            "Core\\": "Core/",
+            "Http\\": "Http/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Michal Sikorski",
+            "email": "michalsikorski61@gmail.com"
+        }
+    ],
+    "require": {}
+    
+}
+
