@@ -1,4 +1,4 @@
-<?php
+  <?php
 use Core\Authenticator;
 use Core\Validator;
 use Core\App;

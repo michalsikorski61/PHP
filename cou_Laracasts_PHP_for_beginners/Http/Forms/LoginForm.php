@@ -7,12 +7,12 @@ use Core\Validator;
 class LoginForm{
     protected $errors = [];
     
-    public function __construct($attributes){
+    public function __construct(public array $attributes){
         if(!Validator::email($attributes['email'])){
             $this->errors['email'] = "Please enter a valid email address";
         }
 
-        if(!Validator::string($attributes['password'], 8,255)){
+        if(!Validator::string($attributes['password'])){
             $this->errors['password'] = "Please enter a password betweent 8 and 255 characters";
         }
        
@@ -22,14 +22,18 @@ class LoginForm{
         
 
        $instance = new static($attributes);
-
+        
        if($instance->failed()){
-        throw new ValidationException();
+        // throw new ValidationException();
+        $instance->throw();
        }
-
+       
        //valid form 
        return $instance;
         
+    }
+    public function throw(){
+        ValidationException::throw($this->errors(), $this->attributes);
     }
 
     public function failed(){
@@ -42,5 +46,6 @@ class LoginForm{
 
     public function error($field, $message){
         $this->errors[$field] = $message;
+        return $this;
     }
 }

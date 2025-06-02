@@ -56,6 +56,10 @@ class Router{
         }
         $this->abort();
     }
+
+    public function previusUrl(){
+        return $_SERVER['HTTP_REFERER'];
+    }
     
     protected function abort($status_code = 404){
         http_response_code($status_code);
