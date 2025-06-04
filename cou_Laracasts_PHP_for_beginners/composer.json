@@ -13,7 +13,20 @@
             "email": "michalsikorski61@gmail.com"
         }
     ],
-    "require": {}
-    
+    "require": {
+        "illuminate/collections": "^12.17"
+    },
+    "require-dev": {
+        "pestphp/pest": "^3.8"
+    },
+    "config": {
+        "allow-plugins": {
+            "pestphp/pest-plugin": true
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
+    }
 }
-
