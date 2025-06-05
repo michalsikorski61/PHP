@@ -3,7 +3,7 @@
         'name' => 'michalski/cou_laracasts_php_for_beginners',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
-        'reference' => '93c61132d65ab2cc30c66144eee2e19fd12ba2e7',
+        'reference' => '43b8f6894312bd81eca09e077e900a4b3a8d98ec',
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -94,7 +94,7 @@
         'michalski/cou_laracasts_php_for_beginners' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => '93c61132d65ab2cc30c66144eee2e19fd12ba2e7',
+            'reference' => '43b8f6894312bd81eca09e077e900a4b3a8d98ec',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
