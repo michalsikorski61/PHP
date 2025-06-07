@@ -3,11 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My laravel app</title>
+    <title>Contact page</title>
 </head>
 <body>
-    @if(true)
-    <h1>Hello {{ $greeting }}</h1>
-    @endif
+    <h1>Hello from the contact page </h1>
+    <pre>
+        
+    </pre>
 </body>
 </html>
