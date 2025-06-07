@@ -11,3 +11,12 @@ Route::get('/', HomeController::class);
 //         'greeting' => 'Welcome to the about page',
 //     ]);
 // });
+Route::get('/we',function(){
+    return view('we', [
+        'we' => 'We are Venom',
+    ]);
+});
+
+Route::get('/about', function(){
+    return view('page/about');
+});

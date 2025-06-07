@@ -3,12 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About page</title>
+    <title>My laravel app</title>
 </head>
 <body>
-    <h1>Hello from the about page</h1>
-    <pre>
-        
-    </pre>
+
+    <h1> {{ $we }}</h1>
+
 </body>
 </html>
