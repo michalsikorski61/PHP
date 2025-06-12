@@ -1,11 +1,18 @@
 <?php
-
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Post extends Model
 {
-    protected $fillable = ['title', 'content'];
-    //
+    /** @use HasFactory<\Database\Factories\PostFactory> */
+    use HasFactory;
+
+    protected $fillable = ['title', 'content', 'author', 'image'];
+
+    public function authorRelation()
+    {
+        return $this->belongsTo(\App\Models\User::class, 'author');
+    }
 }
